@@ -30,6 +30,7 @@
     },
     "android": {
       "package": "app.opusworks.claro",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F6EFE2"
