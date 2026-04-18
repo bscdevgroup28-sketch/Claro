@@ -19,7 +19,7 @@ const REFERRAL_VERSION_KEY = '@claro/referral-version';
 // Update this URL when deploying to Railway
 const API_BASE_URL = __DEV__
   ? 'http://10.0.2.2:3000' // Android emulator → host machine
-  : 'https://your-app.railway.app'; // Production URL — update after Railway deploy
+  : 'https://claro-web-production.up.railway.app'; // Production URL
 
 const FETCH_TIMEOUT_MS = 10_000;
 
