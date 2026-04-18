@@ -101,6 +101,7 @@ export function createSupportedDraft(): ScanDraft {
     mode: 'supported',
     imageUri: '',
     imageLabel: 'Sample hearing notice image',
+    sampleImageKey: 'hearing-notice',
     ocrText: 'NOTICE OF HEARING IN REMOVAL PROCEEDINGS (demo)',
     persisted: false,
     document: {
@@ -110,6 +111,7 @@ export function createSupportedDraft(): ScanDraft {
       capturedAt: new Date().toISOString(),
       imageUri: '',
       imageLabel: 'Sample hearing notice image',
+      sampleImageKey: 'hearing-notice',
       confidence: 0.94,
       ocrText: 'NOTICE OF HEARING IN REMOVAL PROCEEDINGS (demo)',
       explanation: supportedExplanation(),
@@ -150,6 +152,7 @@ export function createUnsupportedDraft(): ScanDraft {
     mode: 'unsupported',
     imageUri: '',
     imageLabel: 'Sample uncertain document image',
+    sampleImageKey: 'uncertain-doc',
     ocrText: '[partially obscured text] (demo)',
     persisted: false,
     document: {
@@ -159,6 +162,7 @@ export function createUnsupportedDraft(): ScanDraft {
       capturedAt: new Date().toISOString(),
       imageUri: '',
       imageLabel: 'Sample uncertain document image',
+      sampleImageKey: 'uncertain-doc',
       confidence: 0.42,
       ocrText: '[partially obscured text] (demo)',
       explanation: unsupportedExplanation(),

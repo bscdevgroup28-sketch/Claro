@@ -1,11 +1,12 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, View } from 'react-native';
 
 import { ActionButton } from '../components/ActionButton';
 import { ScreenLayout } from '../components/ScreenLayout';
 import { SurfaceCard } from '../components/SurfaceCard';
 import { useAppStore } from '../context/AppProvider';
 import { getExplanation } from '../data/mockData';
+import { sampleImages } from '../data/sampleImages';
 import { getCopy } from '../data/translations';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { theme } from '../theme';
@@ -30,6 +31,11 @@ export function VaultListScreen({
             eyebrow={document.support === 'supported' ? text.savedLocally : text.lowConfidence}
             title={getExplanation(document, state.selectedLanguage).title}
           >
+            {document.imageUri ? (
+              <Image source={{ uri: document.imageUri }} style={styles.thumbImage} resizeMode="cover" />
+            ) : document.sampleImageKey && sampleImages[document.sampleImageKey] ? (
+              <Image source={sampleImages[document.sampleImageKey]} style={styles.thumbImage} resizeMode="cover" />
+            ) : null}
             <Text style={styles.bodyText}>{document.capturedAt.slice(0, 10)}</Text>
             <ActionButton
               label={text.openDocument}
@@ -68,6 +74,11 @@ export function DocumentDetailScreen({
 
   return (
     <ScreenLayout title={explanation.title} subtitle={explanation.summary}>
+      {document.imageUri ? (
+        <Image source={{ uri: document.imageUri }} style={styles.docImage} resizeMode="contain" />
+      ) : document.sampleImageKey && sampleImages[document.sampleImageKey] ? (
+        <Image source={sampleImages[document.sampleImageKey]} style={styles.docImage} resizeMode="contain" />
+      ) : null}
       <SurfaceCard tone="accent" eyebrow={`${text.confidence}: ${Math.round(document.confidence * 100)}%`}>
         <Text style={styles.bodyText}>{explanation.whyItMatters}</Text>
         <Text style={styles.bodyText}>{explanation.nextStep}</Text>
@@ -110,6 +121,16 @@ const styles = StyleSheet.create({
     color: theme.colors.text,
     fontSize: 16,
     lineHeight: 23,
+  },
+  docImage: {
+    width: '100%',
+    height: 300,
+    borderRadius: theme.radius.lg,
+  },
+  thumbImage: {
+    width: '100%',
+    height: 160,
+    borderRadius: theme.radius.md,
   },
   muted: {
     color: theme.colors.textMuted,

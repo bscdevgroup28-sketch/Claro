@@ -9,6 +9,7 @@ import { ScreenLayout } from '../components/ScreenLayout';
 import { SurfaceCard } from '../components/SurfaceCard';
 import { useAppStore } from '../context/AppProvider';
 import { getExplanation } from '../data/mockData';
+import { sampleImages } from '../data/sampleImages';
 import { detectScamWarnings } from '../data/scamPatterns';
 import { getCopy } from '../data/translations';
 import { RootStackParamList } from '../navigation/AppNavigator';
@@ -161,6 +162,13 @@ export function ImageReviewScreen({
             resizeMode="contain"
             accessibilityLabel={text.imageReviewTitle}
           />
+        ) : state.scanDraft?.sampleImageKey && sampleImages[state.scanDraft.sampleImageKey] ? (
+          <Image
+            source={sampleImages[state.scanDraft.sampleImageKey]}
+            style={styles.previewImage}
+            resizeMode="contain"
+            accessibilityLabel={state.scanDraft.imageLabel}
+          />
         ) : (
           <View style={styles.previewBox}>
             <Text style={styles.previewText}>{state.scanDraft?.imageLabel ?? text.nothingHere}</Text>
@@ -264,6 +272,12 @@ export function SupportedResultScreen({
           style={styles.resultImage}
           resizeMode="contain"
         />
+      ) : state.scanDraft.sampleImageKey && sampleImages[state.scanDraft.sampleImageKey] ? (
+        <Image
+          source={sampleImages[state.scanDraft.sampleImageKey]}
+          style={styles.resultImage}
+          resizeMode="contain"
+        />
       ) : null}
       <SurfaceCard tone="accent" eyebrow={`${text.confidence}: ${Math.round(state.scanDraft.document.confidence * 100)}%`} title={explanation.title}>
         <Text style={styles.bodyText}>{explanation.summary}</Text>
@@ -315,6 +329,12 @@ export function UnsupportedResultScreen({
       {state.scanDraft?.imageUri ? (
         <Image
           source={{ uri: state.scanDraft.imageUri }}
+          style={styles.resultImage}
+          resizeMode="contain"
+        />
+      ) : state.scanDraft?.sampleImageKey && sampleImages[state.scanDraft.sampleImageKey] ? (
+        <Image
+          source={sampleImages[state.scanDraft.sampleImageKey]}
           style={styles.resultImage}
           resizeMode="contain"
         />

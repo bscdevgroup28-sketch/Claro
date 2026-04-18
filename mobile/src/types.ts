@@ -33,6 +33,7 @@ export interface DocumentRecord {
   capturedAt: string;
   imageUri: string;
   imageLabel: string;
+  sampleImageKey?: string;
   confidence: number;
   ocrText: string;
   explanation: Record<LanguageCode, ExplanationContent>;
@@ -68,6 +69,7 @@ export interface ScanDraft {
   mode: DocumentSupport;
   imageUri: string;
   imageLabel: string;
+  sampleImageKey?: string;
   ocrText: string;
   document: DocumentRecord;
   pendingTask?: TaskRecord;
