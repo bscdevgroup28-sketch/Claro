@@ -19,11 +19,21 @@
         {
           "sounds": []
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "16.0"
+          }
+        }
       ]
     ],
     "ios": {
+      "bundleIdentifier": "app.opusworks.claro",
       "supportsTablet": true,
       "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
         "NSCameraUsageDescription": "Claro needs camera access to photograph immigration documents for on-device scanning.",
         "NSPhotoLibraryUsageDescription": "Claro needs photo library access so you can select document photos for scanning."
       }
