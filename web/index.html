@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claro — Understand Your Immigration Documents</title>
+  <meta name="description" content="Claro helps immigrants understand their legal documents instantly, in English, Spanish, and Haitian Creole. Free, private, on-device." />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Language switcher -->
+  <nav class="lang-bar" aria-label="Language">
+    <button class="lang-btn active" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="es">Español</button>
+    <button class="lang-btn" data-lang="ht">Kreyòl</button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow" data-i18n="eyebrow">Free &amp; Private</p>
+      <h1 data-i18n="headline">Understand your immigration documents — instantly.</h1>
+      <p class="subtitle" data-i18n="subtitle">Claro scans your papers on your phone, explains what they mean in plain language, and connects you to verified legal help. No internet required. Nothing leaves your device.</p>
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary" data-i18n="downloadBtn">Download the App</a>
+        <a href="#donate" class="btn btn-outline" data-i18n="donateBtn">Support Claro</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2 data-i18n="featuresTitle">How Claro Helps</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📷</div>
+        <h3 data-i18n="feat1Title">Scan Documents</h3>
+        <p data-i18n="feat1Desc">Take a photo of any immigration document. Claro reads the text using on-device OCR — no cloud, no uploads, completely private.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3 data-i18n="feat2Title">Plain-Language Explanations</h3>
+        <p data-i18n="feat2Desc">Get a clear summary of what the document says and what it means for you — in English, Spanish, or Haitian Creole.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3 data-i18n="feat3Title">Deadline Reminders</h3>
+        <p data-i18n="feat3Desc">Claro detects important dates — court hearings, filing deadlines — and sets reminders so you never miss them.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3 data-i18n="feat4Title">Scam Detection</h3>
+        <p data-i18n="feat4Desc">Documents are checked against known scam patterns and notario fraud. Claro warns you if something looks suspicious.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <h3 data-i18n="feat5Title">Verified Legal Help</h3>
+        <p data-i18n="feat5Desc">Get connected to real, verified organizations — legal aid, hotlines, and advocacy groups in South Florida, Texas, Arizona, and nationwide.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3 data-i18n="feat6Title">100% On-Device</h3>
+        <p data-i18n="feat6Desc">Everything stays on your phone. No accounts, no servers, no data collection. Your documents are yours alone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy promise -->
+  <section class="privacy" id="privacy">
+    <div class="privacy-inner">
+      <h2 data-i18n="privacyTitle">Your Privacy is Not Negotiable</h2>
+      <p data-i18n="privacyDesc">Claro was built by and for immigrant communities. We understand the stakes. That's why the app processes everything locally on your device — no internet connection needed, no data sent anywhere, no tracking. Period.</p>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="download" id="download">
+    <h2 data-i18n="downloadTitle">Get Claro</h2>
+    <p data-i18n="downloadDesc">Available now for Android. Scan the QR code or tap the button below to install directly.</p>
+    <div class="download-actions">
+      <a href="https://expo.dev/accounts/bscdevgroups-organization/projects/claro/builds/b866eabf-ad95-45b5-9c17-1ebf93164fd4" class="btn btn-primary btn-lg" target="_blank" rel="noopener" data-i18n="downloadAndroid">Download for Android</a>
+    </div>
+    <p class="download-note" data-i18n="downloadNote">iOS coming soon. Works on any Android phone running Android 6.0+.</p>
+  </section>
+
+  <!-- Donate -->
+  <section class="donate" id="donate">
+    <div class="donate-inner">
+      <h2 data-i18n="donateTitle">Help Keep Claro Running</h2>
+      <p data-i18n="donateDesc">Claro is free for everyone who needs it. Your donations help us keep document data up to date, add new regions and languages, expand legal referral networks, and build new features that protect vulnerable communities.</p>
+      <div class="donate-actions">
+        <a href="#" id="stripe-donate-btn" class="btn btn-primary btn-lg" data-i18n="donateAction">Donate Now</a>
+      </div>
+      <p class="donate-note" data-i18n="donateNote">Secure payments powered by Stripe. Every dollar makes a difference.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Claro</p>
+      <p class="footer-tagline" data-i18n="footerTagline">Built with care for immigrant communities.</p>
+      <p class="footer-copy">&copy; 2026 Opus Works. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
