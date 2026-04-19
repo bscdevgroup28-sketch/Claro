@@ -1,0 +1,41 @@
+{
+  "documentType": "Notice of Hearing",
+  "agency": "EOIR",
+  "confidence": 0.98,
+  "urgency": "high",
+  "scamWarnings": [
+    {
+      "id": "S001",
+      "message": {
+        "en": "This appears to be an official notice from the Department of Justice. Verify the authenticity of the court address and judge signature before attending.",
+        "es": "Esto parece ser un aviso oficial del Departamento de Justicia. Verifique la autenticidad de la dirección del tribunal y la firma del juez antes de asistir.",
+        "ht": "Sa aye yon avèti ofisyèl soti nan Departman Jistis la. Verifye otantikite adrès taybò a ak siyen jistis la anvan ou ale."
+      }
+    }
+  ],
+  "explanation": {
+    "en": {
+      "title": "Notice of Hearing Analysis",
+      "summary": "This document is a formal Notice of Hearing issued by the Executive Office for Immigration Review regarding an immigration removal proceeding.",
+      "whyItMatters": "This notice mandates your physical appearance before an Immigration Judge on a specific date and time. Failure to appear can result in an order of removal.",
+      "nextStep": "Immediately confirm the details (date, time, location) and prepare to appear at the Harlingen Immigration Court.",
+      "helpHint": "Always verify official court documents through official government channels before taking action."
+    },
+    "es": {
+      "title": "Análisis de Notificación de Audiencia",
+      "summary": "Este documento es un Aviso de Audiencia formal emitido por la Oficina Ejecutiva de Revisión de Inmigración (EOIR) con respecto a un procedimiento de remoción migratoria.",
+      "whyItMatters": "Este aviso exige su comparecencia física ante un Juez de Inmigración en una fecha y hora específicas. No presentarse puede resultar en una orden de remoción.",
+      "nextStep": "Confirme inmediatamente los detalles (fecha, hora, lugar) y prepárese para comparecer ante el Tribunal de Inmigración de Harlingen.",
+      "helpHint": "Siempre verifique los documentos judiciales oficiales a través de los canales oficiales del gobierno antes de tomar medidas."
+    },
+    "ht": {
+      "title": "Analiz Notifikasyon Evant",
+      "summary": "Dokiman sa a se yon notifikasyon ofisyèl ki emite pa Ofis Ekzekitif pou Revizyon Imigrasyon an rapò ak yon pwosedi demann demontre (removal proceeding).",
+      "whyItMatters": "Notifikasyon sa a mande ou pou w parèt fizikman devan yon Jistis Imigrasyon nan yon dat ak lè espesifik. Pa parèt ka rezilta nan yon lòd demontre (order of removal).",
+      "nextStep": "Konfime imedyatman detay yo (dat, lè, kote) epi prepare pou w parèt devan Tribunal Imigrasyon Harlingen an.",
+      "helpHint": "Toujou verifye dokiman taybòj jistis ofisyèl yo atravè kanal gouvènman ofisyèl yo anvan ou pran aksyon."
+    }
+  },
+  "fields": [],
+  "model": "gemma4:e2b"
+}
