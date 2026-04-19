@@ -1,5 +1,6 @@
 import { classifyDocument } from './classifier';
 import { extractFields } from './extractor';
+import { analyzeWithGemma } from './gemmaAnalyzer';
 import { extractText } from './ocr';
 import { saveDocumentImage } from './imageStore';
 import { DocumentRecord, ScanDraft } from '../types';
@@ -69,17 +70,54 @@ export async function processScan(imageUri: string): Promise<ScanDraft> {
     };
   }
 
-  // 4. Classify document type
+  // 4. Try Gemma 4 analysis first (server-side AI), fall back to local regex
+  const gemmaResult = await analyzeWithGemma(ocrText);
+
+  let document: DocumentRecord;
+
+  if (gemmaResult) {
+    // ── Gemma 4 path ──
+    const isSupported = gemmaResult.confidence >= 0.6;
+    document = {
+      id: makeId('doc'),
+      support: isSupported ? 'supported' : 'unsupported',
+      urgency: gemmaResult.urgency,
+      capturedAt: new Date().toISOString(),
+      imageUri: savedImageUri,
+      imageLabel: gemmaResult.documentType,
+      confidence: gemmaResult.confidence,
+      ocrText,
+      explanation: gemmaResult.explanation,
+      fields: gemmaResult.fields,
+      relatedReferralIds: [],
+    };
+
+    return {
+      mode: isSupported ? 'supported' : 'unsupported',
+      imageUri: savedImageUri,
+      imageLabel: gemmaResult.documentType,
+      ocrText,
+      document,
+      pendingTask: undefined,
+      persisted: false,
+      gemmaModel: gemmaResult.model,
+      scamWarnings: gemmaResult.scamWarnings,
+    };
+  }
+
+  // ── Local fallback path (offline / server unavailable) ──
+
+  // 5. Classify document type
   const classification = classifyDocument(ocrText);
 
-  // 5. Extract structured fields
+  // 6. Extract structured fields
   const fields = extractFields(ocrText, classification);
 
-  // 6. Determine support level
+  // 7. Determine support level
   const isSupported = classification.confidence >= 0.6;
 
-  // 7. Build the document record
-  const document: DocumentRecord = {
+  // 8. Build the document record
+  document = {
     id: makeId('doc'),
     support: isSupported ? 'supported' : 'unsupported',
     urgency: classification.urgency,
@@ -93,7 +131,7 @@ export async function processScan(imageUri: string): Promise<ScanDraft> {
     relatedReferralIds: [],
   };
 
-  // 8. Return scan draft
+  // 9. Return scan draft
   return {
     mode: isSupported ? 'supported' : 'unsupported',
     imageUri: savedImageUri,

@@ -74,6 +74,11 @@ export interface ScanDraft {
   document: DocumentRecord;
   pendingTask?: TaskRecord;
   persisted: boolean;
+  gemmaModel?: string;
+  scamWarnings?: Array<{
+    id: string;
+    message: Record<LanguageCode, string>;
+  }>;
 }
 
 export interface PersistedState {

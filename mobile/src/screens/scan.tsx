@@ -262,10 +262,17 @@ export function SupportedResultScreen({
   }
 
   const explanation = getExplanation(state.scanDraft.document, state.selectedLanguage);
-  const scamWarnings = detectScamWarnings(state.scanDraft.ocrText);
+  const localScamWarnings = detectScamWarnings(state.scanDraft.ocrText);
+  const gemmaScamWarnings = state.scanDraft.scamWarnings ?? [];
+  const scamWarnings = gemmaScamWarnings.length > 0 ? gemmaScamWarnings : localScamWarnings;
 
   return (
     <ScreenLayout title={text.supportedTitle} subtitle={text.supportedSubtitle}>
+      {state.scanDraft.gemmaModel ? (
+        <View style={styles.gemmaBadge}>
+          <Text style={styles.gemmaBadgeText}>Powered by Gemma 4 · {state.scanDraft.gemmaModel}</Text>
+        </View>
+      ) : null}
       {state.scanDraft.imageUri ? (
         <Image
           source={{ uri: state.scanDraft.imageUri }}
@@ -326,6 +333,11 @@ export function UnsupportedResultScreen({
 
   return (
     <ScreenLayout title={text.unsupportedTitle} subtitle={text.unsupportedBody}>
+      {state.scanDraft?.gemmaModel ? (
+        <View style={styles.gemmaBadge}>
+          <Text style={styles.gemmaBadgeText}>Powered by Gemma 4 · {state.scanDraft.gemmaModel}</Text>
+        </View>
+      ) : null}
       {state.scanDraft?.imageUri ? (
         <Image
           source={{ uri: state.scanDraft.imageUri }}
@@ -561,5 +573,18 @@ const styles = StyleSheet.create({
   muted: {
     color: theme.colors.textMuted,
     fontSize: 14,
+  },
+  gemmaBadge: {
+    backgroundColor: '#1A73E8',
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    alignSelf: 'center',
+  },
+  gemmaBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
+    textAlign: 'center',
   },
 });
